@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - LE PERRU Yoann</title>
+    <style>
+        :root {
+            --primary-color: #FF7900; /* Orange corporatif */
+            --dark-color: #333333;
+            --light-color: #f4f4f9;
+            --text-color: #222222;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            background-color: var(--dark-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            display: block;
+            font-weight: normal;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Accueil */
+        #accueil {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 90vh;
+            padding-top: 7rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        #accueil p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e06a00;
+        }
+
+        .btn-secondary {
+            background-color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #444;
+        }
+
+        /* Entreprise */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .company-info h3 {
+            margin: 1.5rem 0 0.5rem 0;
+            color: var(--primary-color);
+        }
+
+        /* Activités & Projets & Veille */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .card span {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .card h3 {
+            margin: 0.5rem 0 1rem 0;
+            color: var(--dark-color);
+        }
+
+        .card ul {
+            margin-left: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: #eee;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Mode Édition Projet */
+        .edit-box {
+            background: #eef2f5;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 2rem;
+        }
+
+        .edit-box h4 {
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .nav-container {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                margin-top: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#accueil">Portfolio</a>
+                <span>M2S Formation / Alternance</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#entreprise">Entreprise</a></li>
+                    <li><a href="#activites">Activités</a></li>
+                    <li><a href="#projet">Projet</a></li>
+                    <li><a href="#veille">Veille techno</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="accueil">
+        <p class="subtitle">Portfolio professionnel</p>
+        <h1>LE PERRU Yoann</h1>
+        <p>Alternant informatique et Pilote d'activité, je présente ici mon parcours chez Orange, mon entreprise d'accueil, ainsi que mes missions et mes réalisations techniques menées dans le cadre de ma formation à M2S Formation.</p>
+        <div class="btn-container">
+            <a href="#entreprise" class="btn">Voir mon parcours</a>
+            <a href="#projet" class="btn btn-secondary">Voir mes projets</a>
+        </div>
+    </section>
+
+    <section id="entreprise">
+        <p style="color: var(--primary-color); font-weight: bold;">Entreprise</p>
+        <h2 class="section-title">ORANGE</h2>
+        
+        <div class="grid-2">
+            <div class="company-info">
+                <h3>Contexte professionnel</h3>
+                <p>Orange est l'un des principaux opérateurs de télécommunications au monde. L'entreprise est un acteur majeur des services numériques, de la connectivité réseau, et accompagne la transformation digitale des particuliers et des entreprises à l'échelle internationale.</p>
+                
+                <h3>Présentation de l'entreprise</h3>
+                <p>Leader sur le marché français, Orange déploie des infrastructures réseaux (Fibre, 4G, 5G) et propose des solutions innovantes. L'entité intègre de nombreux pôles d'expertise allant de la gestion des infrastructures à la cybersécurité et au cloud computing.</p>
+            </div>
+            <div class="company-info">
+                <h3>Secteur d'activité</h3>
+                <p>Télécommunications, réseaux WAN/LAN, services managés, intégration numérique, solutions cloud et support technique à grande échelle pour les entreprises et le grand public.</p>
+
+                <h3>Mon rôle : Pilote d'activité</h3>
+                <p>En tant que Pilote d'activité en alternance, je suis au cœur de la coordination et du suivi opérationnel. Mes missions incluent le pilotage des interventions, l'analyse des indicateurs de performance, la gestion des flux d'activités techniques ainsi que la documentation et la fluidification des processus internes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="activites">
+        <p style="color: var(--primary-color); font-weight: bold;">Expérience terrain</p>
+        <h2 class="section-title">Activités dans l'entreprise</h2>
+        <p style="margin-bottom: 2rem;">Aperçu des grandes catégories de missions et processus que je pilote et réalise au quotidien durant mon alternance.</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <span>Mission 01</span>
+                <h3>Pilotage Opérationnel</h3>
+                <p>Coordination des interventions techniques, suivi des indicateurs (KPI), répartition de la charge de travail et optimisation des délais de résolution.</p>
+            </div>
+            <div class="card">
+                <span>Mission 02</span>
+                <h3>Suivi & Amélioration continue</h3>
+                <p>Analyse des anomalies de flux, automatisation de tableaux de bord, reporting régulier auprès du management et force de proposition sur l'amélioration des processus.</p>
+            </div>
+            <div class="card">
+                <span>Mission 03</span>
+                <h3>Documentation & Qualité</h3>
+                <p>Rédaction de modes opératoires, formalisation des processus de pilotage, mise à jour des référentiels d'activité pour l'équipe.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projet">
+        <p style="color: var(--primary-color); font-weight: bold;">Réalisation technique</p>
+        <h2 class="section-title">Projet</h2>
+        <p style="margin-bottom: 2rem;">Présentation d'une réalisation ou d'un projet clé lié à mon activité de pilotage et d'optimisation.</p>
+
+        <div class="card" style="border-top-width: 6px;">
+            <span>Projet principal</span>
+            <h3 id="project-title-display">La PERI</h3>
+            <p id="project-desc-display">C'est un processus de traitement hebdomadaires qui vise à trier selon des paramètres précis, toutes les QRL qui ont été créer. Pour ensuite les affecter chez le fournisseur si elles passent ce traitement.</p>
+            
+            <ul id="project-steps-display">
+                <li>Récupération du fichier Excel sur ZACHARIE Diffusion</li>
+                <li>Réalisation de la PERI selon différents paramètres</li>
+                <li>Affectation de la QRL chez le fournisseur avec mail contenant la fiche QRL en question</li>
+                <li>Renseignement de la QRL dans un autre fichier de suivis.</li>
+            </ul>
+
+            <h4 style="margin-top: 1.5rem; font-size: 0.9rem; text-transform: uppercase; color: #666;">Technologies & Outils utilisés</h4>
+            <div class="tech-tags" id="project-tech-display">
+                <span class="tag">Excel / VBA</span>
+                <span class="tag">outils interne d'ORANGE (OCAPI, ZACHARIE Diffusion)</span>
+            </div>
+        </div>
+
+    <section id="veille">
+        <p style="color: var(--primary-color); font-weight: bold;">Culture technique</p>
+        <h2 class="section-title">Veille technologique</h2>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h3>Thème de veille</h3>
+                <p>L'apport de l'Intelligence Artificielle et de l'automatisation (RPA) dans le pilotage d'activité et la gestion des flux opérationnels.</p>
+            </div>
+            <div class="card">
+                <h3>Sources utilisées</h3>
+                <p>Newsletters spécialisées, blogs technologiques (ZDNet, Le Monde Informatique), documentations d'outils de Business Intelligence, et partages internes au groupe Orange.</p>
+            </div>
+            <div class="card">
+                <h3>Synthèse</h3>
+                <p>L'analyse prédictive permet d'anticiper les pics d'activité et d'optimiser l'allocation des ressources techniques avant même l'apparition de ralentissements majeurs dans la chaîne.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Portfolio de LE PERRU Yoann - Alternant chez Orange | École : M2S Formation</p>
+    </footer>
+
+    <script>
+        function saveProject() {
+            // Récupérer les valeurs des inputs
+            const title = document.getElementById('edit-title').value;
+            const desc = document.getElementById('edit-desc').value;
+            const stepsText = document.getElementById('edit-steps').value;
+            const techText = document.getElementById('edit-tech').value;
+
+            // Mettre à jour l'affichage du titre et de la description
+            document.getElementById('project-title-display').innerText = title;
+            document.getElementById('project-desc-display').innerText = desc;
+
+            // Mettre à jour les étapes
+            const stepsList = document.getElementById('project-steps-display');
+            stepsList.innerHTML = '';
+            const stepsArray = stepsText.split('\n');
+            stepsArray.forEach(step => {
+                if(step.trim() !== "") {
+                    const li = document.createElement('li');
+                    li.innerText = step;
+                    stepsList.appendChild(li);
+                }
+            });
+
+            // Mettre à jour les tags technologiques
+            const techContainer = document.getElementById('project-tech-display');
+            techContainer.innerHTML = '';
+            const techArray = techText.split(',');
+            techArray.forEach(tech => {
+                if(tech.trim() !== "") {
+                    const span = document.createElement('span');
+                    span.className = 'tag';
+                    span.innerText = tech.trim();
+                    techContainer.appendChild(span);
+                }
+            });
+
+            alert("Le bloc projet a été mis à jour avec succès !");
+        }
+    </script>
+</body>
+</html>
